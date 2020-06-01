@@ -564,22 +564,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 5
-  OutPutPosition: {x: 998.66, y: 2.1, z: 0}
+  OutPutPosition: {x: 8, y: 0, z: 3.2}
   LigthFirstAndHeavySecond:
   - Health: 1
-    Speed: 0.16
+    Speed: 2.56
     HitDamage: 1
-    ShootCooldawn: 0.5
-    TowerRotationSpeed: 60
-    BaseRotationSpeed: 30
-    AnotherTankBuildingTime: 6
+    ShootCooldawn: 0.8
+    TowerRotationSpeed: 100
+    BaseRotationSpeed: 60
+    AnotherTankBuildingTime: 8
   - Health: 2
-    Speed: 0.08
+    Speed: 1.28
     HitDamage: 2
     ShootCooldawn: 1.2
-    TowerRotationSpeed: 30
-    BaseRotationSpeed: 15
-    AnotherTankBuildingTime: 3
+    TowerRotationSpeed: 65
+    BaseRotationSpeed: 36
+    AnotherTankBuildingTime: 4
   lightTankPrefab: {fileID: 7075404839034035827, guid: 2ecc95af9413b2c40856979a0bbbfd11,
     type: 3}
   heavyTankPrefab: {fileID: 2927767825617190910, guid: f76376654d88f0547a041e3f299ea611,
