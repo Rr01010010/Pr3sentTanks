@@ -20,15 +20,7 @@ public class TankCharacter : BaseTank
     Vector3 lastTarget = Vector3.zero;
     void MoveForward() 
     {
-        //Debug.Log($"Default = {LayerMask.GetMask("Default")}");
-        //Debug.Log($"Transparent = {LayerMask.GetMask("TransparentFX")}");
-        //Debug.Log($"Ignore Raycast = {LayerMask.GetMask("Ignore Raycast")}");
-        //Debug.Log($"Water = {LayerMask.GetMask("Water")}");
-        //Debug.Log($"UI = {LayerMask.GetMask("UI")}");
-        //Debug.Log($"Tanks = {LayerMask.GetMask("Tanks")}");
-
         myRigid.AddForce(transform.forward * MovementSpeed);
-        //transform.position += transform.up * MovementSpeed * Time.deltaTime;
     }
     void MoveBack() 
     {

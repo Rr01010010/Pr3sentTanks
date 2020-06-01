@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TanksFactory : MonoDestructionObjectsTanks
+public class Factory : MonoDestructionObjects
 {
     [SerializeField] Vector3 OutPutPosition;
     [SerializeField] List<BaseTankAI.Characteristics> LigthFirstAndHeavySecond = new List<BaseTankAI.Characteristics>();

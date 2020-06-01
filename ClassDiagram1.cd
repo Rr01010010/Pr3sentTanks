@@ -1,35 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="GridPlaceholder" Collapsed="true">
-    <Position X="1.5" Y="9" Width="1.5" />
+  <Class Name="GridPlaceholder">
+    <Position X="2.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AKQEAAQAACgAACQgSAAgAAEACEAAAEAAEAAEAAEAAAA=</HashCode>
       <FileName>Assets\Tanks\Scripts\LevelCreator\GridPlaceholder.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PrefabsSO" Collapsed="true">
-    <Position X="5" Y="9" Width="1.5" />
+  <Class Name="PrefabsSO">
+    <Position X="0.75" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Tanks\Scripts\LevelCreator\PrefabsSO.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TopMouseControl" Collapsed="true">
-    <Position X="5" Y="10" Width="1.5" />
+  <Class Name="TopMouseControl">
+    <Position X="0.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ADQCAAAAACAAAAAQACAAQAAAAAAAAACAAAgACAAAQAA=</HashCode>
       <FileName>Assets\Tanks\Scripts\LevelCreator\TopMouseControl.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MonoDestructionObjectsTanks" Collapsed="true">
+  <Class Name="MonoDestructionObjects" Collapsed="true">
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAEAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Tanks\Scripts\MonoDestructionObjectsTanks.cs</FileName>
+      <FileName>Assets\Tanks\Scripts\MonoDestructionObjects.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PathFinding" Collapsed="true">
-    <Position X="3.25" Y="9" Width="1.5" />
+  <Class Name="PathFinding">
+    <Position X="7.75" Y="6.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="PathFinding.CellInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Tanks\Scripts\Pathfinding\PathFinding.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AIAQAAPAAAAoAAQAQhgAAoAAAAAAABAAQAABEAAAAAQ=</HashCode>
       <FileName>Assets\Tanks\Scripts\Pathfinding\PathFinding.cs</FileName>
@@ -77,15 +84,22 @@
       <FileName>Assets\Tanks\Scripts\TankBehaviors\TankCharacter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TanksFactory" Collapsed="true">
-    <Position X="9.75" Y="2" Width="1.5" />
+  <Class Name="Factory" Collapsed="true">
+    <Position X="8.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIUIAAAACAAAAAAAIAAAAAAAAAAAAAAEAAAAAEAAAA=</HashCode>
-      <FileName>Assets\Tanks\Scripts\TanksFactory.cs</FileName>
+      <FileName>Assets\Tanks\Scripts\Factory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TanksManager" Collapsed="true">
-    <Position X="1.5" Y="10" Width="1.5" />
+  <Class Name="TanksManager">
+    <Position X="6" Y="6.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="TanksManager.PossibleStates" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Tanks\Scripts\TanksManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>IAAAAAAAACAABAAAIAAACIIgQAAQAAAAEAAAAQAgAEA=</HashCode>
       <FileName>Assets\Tanks\Scripts\TanksManager.cs</FileName>

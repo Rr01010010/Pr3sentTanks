@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rocket : MonoDestructionObjectsTanks
+public class Rocket : MonoDestructionObjects
 {
     public float Damage;
     [SerializeField] float speedRocket;

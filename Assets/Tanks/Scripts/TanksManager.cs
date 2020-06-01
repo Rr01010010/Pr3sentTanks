@@ -25,7 +25,7 @@ public class TanksManager : MonoBehaviour
     [SerializeField] Transform obstaclesContainer = null;
     [SerializeField] private TankCharacter _player = null;
     public PathFinding PathFindingSystem = null;
-    public TanksFactory Factory = null;
+    public Factory Factory = null;
     public TankCharacter Player 
     {
         get 
@@ -35,10 +35,12 @@ public class TanksManager : MonoBehaviour
             foreach (BaseTankAI ai in LightTanks) 
             {
                 ai.StopTankBehaviors = true;
+                LightTanks.Remove(ai);
             }
             foreach (BaseTankAI ai in HeavyTanks)
             {
                 ai.StopTankBehaviors = true;
+                HeavyTanks.Remove(ai);
             }
 
             return null;

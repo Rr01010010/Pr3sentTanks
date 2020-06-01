@@ -20,60 +20,49 @@ public class HeavyTank : BaseTankAI
     }
     private void Attack() 
     {
-        Surround();
-        //if(TargetPlayer == null) TargetPlayer = TanksManager.SingleManager.Player.transform;
-        //if (ShouldShoot()) Shoot();
-        //MoveToPosition = PositionForMovingToPosition(GetNextStep(), Time.deltaTime);
+        BaseTactic();
     }
     private void DefendBase() 
     {
-        Surround();
-        //if (TargetPlayer != null) 
-        //{
-        //    TargetPlayer = null;
-        //    Target = SearchingPositionAroundObject(TanksManager.SingleManager.Factory.transform,0.8f);
-        //}
-        //if (ShouldShoot()) Shoot();
-        //MoveToPosition = PositionForMovingToPosition(GetNextStep(), Time.deltaTime);
+        BaseTactic();
     }
     private void Surround()
     {
-        if (TargetPlayer != null)
-        {
-            //TargetPlayer = null;
-            //Target = SearchingPositionAroundObject(TanksManager.SingleManager.Player.transform,0.64f);
-        }
+        BaseTactic();
+    }
 
-
-
-
-
-        if(TanksManager.SingleManager.Player != null) 
+    void BaseTactic()
+    {
+        if (TanksManager.SingleManager.Player != null)
         {
             TargetPlayer = TanksManager.SingleManager.Player;
+
             lastObservedPlayerPosition = TargetPlayer.TowerAxis.position;//Костыль
-                                                               //Поворот башни
-            Vector3 towerRotatetionTarget=lastObservedPlayerPosition;
+                                                                         //Поворот башни
+            Vector3 towerRotatetionTarget = lastObservedPlayerPosition;
+            towerRotatetionTarget -= Vector3.up * towerRotatetionTarget.y;
 
-            towerRotatetionTarget += Vector3.down * towerRotatetionTarget.y;
-
+            AxisRotate(TowerAxis, towerRotatetionTarget, 0, towerRotationSpeed);
             if (AngleBetweenTarget(TowerAxis, towerRotatetionTarget) > 0.05f)
             {
                 AxisRotate(TowerAxis, towerRotatetionTarget, 0, towerRotationSpeed);
             }
 
-            //Поворот базы
-            if (AngleBetweenTarget(transform, GetNextStep()) < 0.05f)
-            {
-                transform.position = PositionForMovingToPosition(GetNextStep());
-            }
-            else
-            {
-                if (AngleBetweenTarget(transform, GetNextStep()) > 0.05f) AxisRotate(transform, GetNextStep(), 1, baseRotationSpeed);
-            }
+            BaseBehavior();
 
             if (ShouldShoot()) Shoot(hitDamage);
         }
-        
     }
+
+    private void BaseBehavior()
+    {
+
+        //Поворот базы
+        if (AngleBetweenTarget(transform, GetNextStep()) < 0.05f)
+        {
+            transform.position = PositionForMovingToPosition(GetNextStep()); // движение в сторону цели
+        }
+        else if (AngleBetweenTarget(transform, GetNextStep()) > 0.05f) AxisRotate(transform, GetNextStep(), 1, baseRotationSpeed); // поворот на цель
+    }
+
 }

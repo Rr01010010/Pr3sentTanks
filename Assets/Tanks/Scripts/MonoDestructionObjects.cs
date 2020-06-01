@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
-public class MonoDestructionObjectsTanks : MonoBehaviour
+public class MonoDestructionObjects : MonoBehaviour
 {
     [SerializeField] protected int _health = 1;
     public virtual int Health 

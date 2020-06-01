@@ -2,19 +2,19 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class BaseTank : MonoDestructionObjectsTanks
+public class BaseTank : MonoDestructionObjects
 {
 
     public Transform TowerAxis { get => towerAxis; set => towerAxis = value; }
     [SerializeField] private Transform towerAxis = null;
 
     [SerializeField] protected Rocket _rocketPrefab = null;
-    protected List<float> lastDistanses = null;
-    protected List<bool> pluses = null;
-
+    
     public float MovementSpeed;
 
-    #region
+    #region Поворот
+    protected List<float> lastAngles = null;
+    protected List<bool> pluses = null;
     protected virtual float AngleBetweenTarget(Transform Axis, Vector3 target)
     {
         return AngleBetweenTarget(Axis, target, Vector3.forward);
@@ -24,7 +24,7 @@ public class BaseTank : MonoDestructionObjectsTanks
         if (Axis != null)
         {
             //проверка на нулрефы
-            if (lastDistanses == null) lastDistanses = new List<float>();
+            if (lastAngles == null) lastAngles = new List<float>();
             if (pluses == null) pluses = new List<bool>();
 
             //высчитываем позицию перед башней в равном удалении как и удаленность цели от башни
@@ -44,17 +44,17 @@ public class BaseTank : MonoDestructionObjectsTanks
         if (Axis != null)
         {
             //проверка на нулрефы
-            if (lastDistanses == null) lastDistanses = new List<float>();
+            if (lastAngles == null) lastAngles = new List<float>();
             if (pluses == null) pluses = new List<bool>();
-            while (lastDistanses.Count <= layer) { lastDistanses.Add(1000); pluses.Add(true); }
+            while (lastAngles.Count <= layer) { lastAngles.Add(1000); pluses.Add(true); }
 
             //высчитываем угл между башней и целью, и корректируем под скорость поворота 
             //PS тут можно потенциально добавить анимации или инерцию поворота
             float angle = AngleBetweenTarget(Axis, target);
 
             //Самый хардкор здесь, я определяю сторону в которую нужно крутить башню
-            if (angle > lastDistanses[layer]) pluses[layer] = !pluses[layer];
-            lastDistanses[layer] = angle;
+            if (angle > lastAngles[layer]) pluses[layer] = !pluses[layer];
+            lastAngles[layer] = angle;
 
             if (angle > RotationSpeed * Time.deltaTime) angle = RotationSpeed * Time.deltaTime;            
             
@@ -100,20 +100,5 @@ public class BaseTank : MonoDestructionObjectsTanks
         }
         else return false;
 
-    }
-    public static bool PositionInViewField(Vector3 ViewPosition, Vector3 edgeVision1, Vector3 edgeVision2, Vector3 CheckingPos)
-    {
-        // узнали направления крайних точек зрения
-        Vector3 direction1 = edgeVision1 - ViewPosition;
-        Vector3 direction2 = edgeVision2 - ViewPosition;
-
-        // узнали угол поля зрения  (половину)
-        float viewAngle = Vector3.Angle(direction1, direction2) / 2;
-
-        //узнали направление центральной точки взгляда и направление проверяемой точки
-        direction1 = (direction1.normalized + direction2.normalized);
-        direction2 = CheckingPos - ViewPosition;
-
-        return Vector3.Angle(direction1, direction2) < viewAngle;
     }
 }

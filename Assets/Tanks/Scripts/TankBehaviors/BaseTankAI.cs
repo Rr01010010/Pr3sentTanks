@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class BaseTankAI : BaseTank
 {
+    #region Поля с характеристиками танка и свойства для установки характеристик
     [Serializable]
     public struct Characteristics 
     {
@@ -34,18 +35,10 @@ public abstract class BaseTankAI : BaseTank
     protected float baseRotationSpeed;
 
     [SerializeField] protected float timeToUpdatePath = 2;
+    #endregion
 
-
+    #region Вызов поиска пути
     private List<Vector3> PathToPlayer = new List<Vector3>();
-
-    protected void OnDrawGizmos()
-    {
-        for (int i = 1; PathToPlayer != null && PathToPlayer.Count > i; i++) 
-        {
-            Debug.DrawLine(PathToPlayer[i], PathToPlayer[i - 1], Color.magenta);
-        }
-    }
-
     protected void SearchPath(Vector3 target) 
     {
         SearchPathToTarget = target;
@@ -68,23 +61,10 @@ public abstract class BaseTankAI : BaseTank
             yield return new WaitForSeconds(timeToUpdatePath);
         }
     }
+    #endregion
 
-    public TankCharacter TargetPlayer { get; set; }
-    //private BaseTank _targetPlayer = null;
-    public Vector3 Target 
-    {
-        get 
-        {
-            if (TargetPlayer!=null && TargetPlayer.Equals(TanksManager.SingleManager.Player)) return TargetPlayer.transform.position;
-            else return _target;
-        }
-        set => _target = value;
-    }
-    private Vector3 _target;
-
-
+    #region Передвижение танка
     public Vector3 MoveToPosition { set => transform.Translate(value - transform.position); }
-
     public Vector3 PositionForMovingToIndex(int index,float timeIntervals = float.MinValue) 
     {
         if (timeIntervals < 0) timeIntervals = Time.deltaTime;
@@ -95,6 +75,9 @@ public abstract class BaseTankAI : BaseTank
     //    if (timeIntervals < 0) timeIntervals = Time.deltaTime;
     //    return Vector3.MoveTowards(transform.position, pos, speed * timeIntervals);
     //}
+    #endregion
+
+    #region Выбор позиции для последующего перемещения
     protected Vector3 GetNextStep() 
     {
         if (ClearingPassedStepThereisStep()) return PathToPlayer[0];
@@ -105,6 +88,20 @@ public abstract class BaseTankAI : BaseTank
         if (!obstacles) return Target + Vector3.Normalize(transform.position - Target) * 1.6f;
         else return transform.position;
     }
+
+    public TankCharacter TargetPlayer { get; set; }
+    //private BaseTank _targetPlayer = null;
+    public Vector3 Target
+    {
+        get
+        {
+            if (TargetPlayer != null && TargetPlayer.Equals(TanksManager.SingleManager.Player)) return TargetPlayer.transform.position;
+            else return _target;
+        }
+        set => _target = value;
+    }
+    private Vector3 _target;
+
     protected bool ClearingPassedStepThereisStep() 
     {
         if (PathToPlayer == null || PathToPlayer.Count == 0) return false;
@@ -129,7 +126,6 @@ public abstract class BaseTankAI : BaseTank
             else return true;
         }
     }
-
 
     //public Vector3 SearchingPositionAroundObject(Transform _object, float range) 
     //{
@@ -160,6 +156,25 @@ public abstract class BaseTankAI : BaseTank
     //
     //    return Vector3.zero; 
     //}
+    #endregion
+
+    #region Метод которые может обозначить, видит ли вражеский танк игрока или нет
+    public static bool PositionInViewField(Vector3 ViewPosition, Vector3 edgeVision1, Vector3 edgeVision2, Vector3 CheckingPos)
+    {
+        // узнали направления крайних точек зрения
+        Vector3 direction1 = edgeVision1 - ViewPosition;
+        Vector3 direction2 = edgeVision2 - ViewPosition;
+
+        // узнали угол поля зрения  (половину)
+        float viewAngle = Vector3.Angle(direction1, direction2) / 2;
+
+        //узнали направление центральной точки взгляда и направление проверяемой точки
+        direction1 = (direction1.normalized + direction2.normalized);
+        direction2 = CheckingPos - ViewPosition;
+
+        return Vector3.Angle(direction1, direction2) < viewAngle;
+    }
+    #endregion
 
     protected override void OnCollisionEnter(Collision other)
     {
@@ -176,7 +191,7 @@ public abstract class BaseTankAI : BaseTank
         get => _stopTankBehavior;
         set 
         {
-            //if (value) { if(gameObject!=null) Destroy(gameObject); }
+            if (value) { if(gameObject!=null) Destroy(gameObject); }
             _stopTankBehavior = value;
         }
     }
