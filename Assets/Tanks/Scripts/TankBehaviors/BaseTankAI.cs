@@ -127,35 +127,6 @@ public abstract class BaseTankAI : BaseTank
         }
     }
 
-    //public Vector3 SearchingPositionAroundObject(Transform _object, float range) 
-    //{
-    //    return SearchingPositionAroundObject(_object.position,range); 
-    //}
-    //
-    //public Vector3 SearchingPositionAroundObject(Vector3 _object, float range) 
-    //{
-    //    if (TanksManager.SingleManager.takenWayPoints == null) TanksManager.SingleManager.takenWayPoints = new List<int>();
-    //
-    //    if (takenIdx != -1)
-    //    {
-    //        TanksManager.SingleManager.takenWayPoints[takenIdx] = -1;
-    //        takenIdx = -1;
-    //    }
-    //
-    //    Vector3 SearchedPos = Vector3.zero;
-    //    while (!(Bound1.x > SearchedPos.x && SearchedPos.x > Bound2.x) || !(Bound1.y > SearchedPos.y && SearchedPos.y > Bound2.y)) 
-    //    {
-    //        float x = UnityEngine.Random.Range(-range, range);
-    //        float y = Mathf.Sqrt(range * range - x * x);
-    //        float znak = UnityEngine.Random.Range(-1.1f, 1.1f);
-    //        if (znak < 0) y = -y;
-    //        SearchedPos = new Vector3(x, y, 0);
-    //    }
-    //    takenIdx = TanksManager.SingleManager.SearchingNearestWayPoint(SearchedPos);
-    //    TanksManager.SingleManager.takenWayPoints.Add(takenIdx);
-    //
-    //    return Vector3.zero; 
-    //}
     #endregion
 
     #region Метод которые может обозначить, видит ли вражеский танк игрока или нет

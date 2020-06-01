@@ -16,6 +16,7 @@ public class TanksManager : MonoBehaviour
             if (_singleManager != null)
             {
                 Debug.LogError("Ошибка попытка присвоить одиночному менеджеру ещё одно значение");
+                Destroy(value.gameObject);
             }
             _singleManager = value;
         }
@@ -50,7 +51,6 @@ public class TanksManager : MonoBehaviour
 
     public List<BaseTankAI> LightTanks { get; set; }
     public List<BaseTankAI> HeavyTanks { get; set; }
-    public List<int> takenWayPoints { get; set; }
     public PossibleStates TanksState { get => _tanksState; set => _tanksState = value; }
 
     private void Awake()
@@ -64,20 +64,6 @@ public class TanksManager : MonoBehaviour
         StartCoroutine(ChangeStates(5));
     }
     
-    //public int SearchingNearestWayPoint(Vector3 position)
-    //{
-    //    float dist;
-    //    int nighborIndex = int.MinValue; float minDistance = float.MaxValue;
-    //    position = new Vector3(position.x, position.y, WayPoints[0].z);
-    //    for (int i = 0; i < WayPoints.Count; i++)
-    //    {
-    //        dist = Vector3.Distance(position, WayPoints[i]);
-    //        //Debug.Log($"dist = {dist}");
-    //        if (minDistance > dist) { minDistance = dist; nighborIndex = i; }
-    //        if (0.079f > dist) break;
-    //    }
-    //    return nighborIndex;
-    //}
     private IEnumerator ChangeStates(float timerCheking)
     {
         while( (LightTanks.Count>0 || HeavyTanks.Count>0 || Factory != null) && Player!=null)
@@ -91,30 +77,13 @@ public class TanksManager : MonoBehaviour
                 if (LightTanks.Count + HeavyTanks.Count < 6) _tanksState = PossibleStates.Surround;
                 else _tanksState = PossibleStates.Attack;
             }
-            //tanksStateStr = _tanksState.ToString();
             yield return new WaitForSeconds(timerCheking);
         }
             
     }
-    //[SerializeField] string tanksStateStr;
     private PossibleStates _tanksState;
     public enum PossibleStates
     {
         DefendBase, Attack, Surround
     }
-    //private void OnDrawGizmos()
-    //{
-    //    if(WayPoints!=null)
-    //    for (int x = 0; x < WayPoints.Count; x++) 
-    //    {
-    //        for (int y = 0; y < WayPoints.Count; y++) 
-    //        {
-    //            if(PathTable!=null)
-    //            if (PathTable[x, y].Count== 2) 
-    //            {
-    //                //Gizmos.DrawLine(WayPoints[x], WayPoints[y]);
-    //            }
-    //        }
-    //    }
-    //}
 }

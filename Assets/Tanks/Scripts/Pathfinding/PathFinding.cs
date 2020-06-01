@@ -40,10 +40,10 @@ public class PathFinding : MonoBehaviour
         public int iY;
     }
 
-    #region 3 Main methods, which pathfinding
+    #region 2 Main methods, which pathfinding
 
     #region StartPathfinding
-    public List<Vector3> StartPathFinding(Vector3 from, Vector3 target,bool parallel = false) 
+    public List<Vector3> StartPathFinding(Vector3 from, Vector3 target) 
     {
         bool obstacles = ObstaclesRaycast(from, target);
         if(!obstacles) return null;
@@ -61,81 +61,11 @@ public class PathFinding : MonoBehaviour
         CellInfo NextSearch = new CellInfo(nextPos, Vector3.Distance(nextPos, from) + Vector3.Distance(nextPos, target), Vector3.Distance(nextPos, from), null, iX, iY);
         SearchingNeighbour.Add(NextSearch);
 
-        if (parallel) { StepsParallelPathFinding(NextSearch, target); return parallelPath; }
         return StepsPathFinding(NextSearch, target);
     }
     #endregion
     [SerializeField] float deltadistanceToTargetForSearchStopping = 0.8f;
 
-
-    #region Parallel Pathfinding
-    public List<Vector3> parallelPath;
-    private IEnumerator StepsParallelPathFinding(CellInfo currentCell, Vector3 target, int MaxLoops = 99999)
-    {
-        bool search = true;
-        int iLoop = 0;
-
-        while (search)
-        {
-            iLoop++;
-            if (iLoop > MaxLoops) { throw new Exception("Fuck The Pathfinding"); search = false; }
-
-            yield return new WaitForSeconds(0.01f);
-
-            VisitedNodes.Add(currentCell);
-            SearchingNeighbour.Remove(currentCell);
-
-            if (Vector3.Distance(currentCell.Position, target) < (_cellSize + deltadistanceToTargetForSearchStopping))
-            {
-                if (!Physics.Raycast(currentCell.Position, target - currentCell.Position, Vector3.Distance(currentCell.Position, target)))
-                {
-                    parallelPath = PathBuild(); //
-                    search = false;
-                }
-            }
-            else
-            {
-                float priority;
-
-                int iX = currentCell.iX;
-                int iY = currentCell.iY;
-
-                for (int x = iX - 1; x <= iX + 1; x++)
-                {
-                    for (int y = iY - 1; y <= iY + 1; y++)
-                    {
-                        if (y >= 0 && y < height && x >= 0 && x < width /*&& !obstaclesGrid[x, y]*/)
-                        {
-                            Vector3 nextPos = new Vector3(minHeight + y * _cellSize, currentCell.Position.y, minWidth + x * _cellSize);
-                            if (CenterSearchingZone != null) nextPos += CenterSearchingZone.position;
-                            float distanceBtwNextAndCurrent = Vector3.Distance(nextPos, currentCell.Position) + currentCell.StartDistance;
-
-                            bool visited = false;
-                            foreach (CellInfo node in VisitedNodes) if (node.Position.Equals(nextPos)) visited = true;
-
-                            if (!visited && !Physics.Raycast(currentCell.Position, nextPos - currentCell.Position, Vector3.Distance(currentCell.Position, nextPos)))
-                            {
-                                priority = distanceBtwNextAndCurrent + Vector3.Distance(nextPos, target);
-
-                                int iSearching = -1000;
-                                for (int i = 0; i < SearchingNeighbour.Count; i++) if (SearchingNeighbour[i].Position.Equals(nextPos)) iSearching = i;
-
-                                if (iSearching == -1000) SearchingNeighbour.Add(new CellInfo(nextPos, priority, distanceBtwNextAndCurrent, currentCell, x, y));
-                                else if (SearchingNeighbour[iSearching].Priority > priority) SearchingNeighbour[iSearching] = new CellInfo(nextPos, priority, distanceBtwNextAndCurrent, currentCell, x, y);
-
-                            }
-                        }
-                    }
-                }
-
-                CellInfo NextSearch = ChoosingCell();
-                if (NextSearch == null) { parallelPath = null; search = false; }
-
-                currentCell = NextSearch;
-            }
-        }
-    }
-    #endregion
 
     #region Pathfinding
     private List<Vector3> StepsPathFinding(CellInfo currentCell, Vector3 target, int MaxLoops = 9999)
@@ -146,7 +76,7 @@ public class PathFinding : MonoBehaviour
         while (true)
         {
             iLoop++;
-            if (iLoop > MaxLoops) { Debug.LogWarning("Fuck The Pathfinding"); return null; }
+            if (iLoop > MaxLoops) { Debug.LogWarning("error Pathfinding"); return null; }
 
             VisitedNodes.Add(currentCell);
             SearchingNeighbour.Remove(currentCell);
