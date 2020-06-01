@@ -1,0 +1,8 @@
+Library
+obj/Debug
+Temp
+Packages/manifest.json
+.vs/
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
+QuarantineMadness.sln
