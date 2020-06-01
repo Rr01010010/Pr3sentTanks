@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GridPlaceholder" Collapsed="true">
+    <Position X="1.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKQEAAQAACgAACQgSAAgAAEACEAAAEAAEAAEAAEAAAA=</HashCode>
+      <FileName>Assets\Tanks\Scripts\LevelCreator\GridPlaceholder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrefabsSO" Collapsed="true">
+    <Position X="5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Tanks\Scripts\LevelCreator\PrefabsSO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TopMouseControl" Collapsed="true">
+    <Position X="5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADQCAAAAACAAAAAQACAAQAAAAAAAAACAAAgACAAAQAA=</HashCode>
+      <FileName>Assets\Tanks\Scripts\LevelCreator\TopMouseControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MonoDestructionObjectsTanks" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAEAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Tanks\Scripts\MonoDestructionObjectsTanks.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathFinding" Collapsed="true">
+    <Position X="3.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAQAAPAAAAoAAQAQhgAAoAAAAAAABAAQAABEAAAAAQ=</HashCode>
+      <FileName>Assets\Tanks\Scripts\Pathfinding\PathFinding.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rocket" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAAAAACAAAAAAgAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Tanks\Scripts\Rocket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BaseTank" Collapsed="true">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAQQAAAAAAABEAAAgABAAAAAAgAAADCQAAIgACAAAE=</HashCode>
+      <FileName>Assets\Tanks\Scripts\TankBehaviors\BaseTank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BaseTankAI" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIEAAAAAAAICAAMAAACACKAQACAQAAIAAKADAAAAAA=</HashCode>
+      <FileName>Assets\Tanks\Scripts\TankBehaviors\BaseTankAI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeavyTank" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAAiAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Tanks\Scripts\TankBehaviors\HeavyTank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LightTank" Collapsed="true">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAEAAAIAiAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Tanks\Scripts\TankBehaviors\LightTank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankCharacter" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAIAAAAiAIQAAIQAAAAAAAEAEQAAAIAAAAAAAQAAA=</HashCode>
+      <FileName>Assets\Tanks\Scripts\TankBehaviors\TankCharacter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TanksFactory" Collapsed="true">
+    <Position X="9.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIUIAAAACAAAAAAAIAAAAAAAAAAAAAAEAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Tanks\Scripts\TanksFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TanksManager" Collapsed="true">
+    <Position X="1.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAACAABAAAIAAACIIgQAAQAAAAEAAAAQAgAEA=</HashCode>
+      <FileName>Assets\Tanks\Scripts\TanksManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
